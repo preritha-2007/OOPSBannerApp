@@ -1,46 +1,61 @@
 public class OOPSBannerApp {
 
-    // Static method for O
-    public static String[] getO() {
-        return new String[]{
+    // Static Inner Class to store character and pattern
+    static class CharacterPatternMap {
+
+        private char character;
+        private String[] pattern;
+
+        public CharacterPatternMap(char character, String[] pattern) {
+            this.character = character;
+            this.pattern = pattern;
+        }
+
+        public char getCharacter() {
+            return character;
+        }
+
+        public String[] getPattern() {
+            return pattern;
+        }
+    }
+
+    public static void main(String[] args) {
+
+        CharacterPatternMap O = new CharacterPatternMap('O', new String[]{
                 " OOO ",
                 "O   O",
                 "O   O",
                 "O   O",
                 " OOO "
-        };
-    }
+        });
 
-    // Static method for P
-    public static String[] getP() {
-        return new String[]{
+        CharacterPatternMap P = new CharacterPatternMap('P', new String[]{
                 "PPPP ",
                 "P   P",
                 "PPPP ",
                 "P    ",
                 "P    "
-        };
-    }
+        });
 
-    // Static method for S
-    public static String[] getS() {
-        return new String[]{
+        CharacterPatternMap S = new CharacterPatternMap('S', new String[]{
                 " SSSS",
                 "S    ",
                 " SSS ",
                 "    S",
                 "SSSS "
-        };
-    }
+        });
 
-    public static void main(String[] args) {
+        CharacterPatternMap[] banner = {O, O, P, S};
 
-        String[] O = getO();
-        String[] P = getP();
-        String[] S = getS();
+        for (int i = 0; i < 5; i++) {
+            StringBuilder line = new StringBuilder();
 
-        for (int i = 0; i < O.length; i++) {
-            System.out.println(O[i] + "  " + O[i] + "  " + P[i] + "  " + S[i]);
+            for (CharacterPatternMap cp : banner) {
+                line.append(cp.getPattern()[i]).append("  ");
+            }
+
+            System.out.println(line);
         }
     }
 }
